@@ -12,6 +12,8 @@ Supported project types:
 - **React**: Create a new React project.
 - **Vue**: Create a new Vue project.
 - **Next.js**: Create a new Next.js project.
+- **Express**: Create a new Express project.
+- **Nest.js**: Create a new Nest.js project.
 
 More features coming soon!
 
@@ -24,15 +26,22 @@ Only tested on Windows at the moment. Please report any issues you encounter.
 
 ## Known Issues
 
-- Backend & Fullstack is not yet implemented.
+- Adonis.js & Fullstack is not yet implemented.
 - Next.js process loading for a long time due to the installation of dependencies (but it's working).
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.4
 
-- Initial release of Easy Setup.
-- Create a new project with a single command (Frontend).
+- Add support Back-end projects (Express, Nest.js).
+
+### Roadmap
+
+- Add support for Adonis.js & Fullstack projects.
+- Add status bar to show the progress of the project creation.
+- Add support for more project types.
+- Add more configuration options. (e.g. choose between npm and yarn)
+- Test on other operating systems (Linux, MacOS).
 
 ## Commands
 
