@@ -2,6 +2,7 @@
   "name": "easy-setup",
   "displayName": "Easy Setup",
   "description": "A tool for automates the setup of various projects",
+  "publisher": "MarvinBost",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.93.0"
