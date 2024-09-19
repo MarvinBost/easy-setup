@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import {exec} from "child_process";
+import {exec, spawn} from "child_process";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -130,12 +130,14 @@ export async function createProject(technology: string) {
     return;
   }
   const urlWorkspace = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
-  const isTypescript =
-    technology !== "Angular"
-      ? await vscode.window.showQuickPick(["Yes", "No"], {
-          placeHolder: "Do you want to use Typescript?",
-        })
-      : "Yes";
+  let isTypescript: string | undefined;
+  if (technology === "NestJS" || technology === "Angular") {
+    isTypescript = "Yes";
+  } else {
+    isTypescript = await vscode.window.showQuickPick(["Yes", "No"], {
+      placeHolder: "Do you want to use Typescript?",
+    });
+  }
   if (!isTypescript) {
     return;
   }
@@ -288,13 +290,116 @@ export async function createProject(technology: string) {
 
       break;
     case "NestJS":
+      // Check if NestJS CLI is installed
+      exec("nest --version", (err, stdout, stderr) => {
+        if (err) {
+          exec("npm install -g @nestjs/cli", (err, stdout, stderr) => {
+            vscode.window.showInformationMessage(
+              "NestJS CLI installed successfully."
+            );
+            if (err) {
+              vscode.window.showErrorMessage(
+                "Error: Unable to install NestJS CLI."
+              );
+              return;
+            }
+          });
+        }
+      });
       vscode.window.showInformationMessage("Creating NestJS project...");
+      // Create NestJS project
+      exec(
+        `cd ${urlWorkspace} && nest new ${projectName} ${
+          isTypescript === "Yes" ? "--strict" : ""
+        } --package-manager=npm`,
+        (err, stdout, stderr) => {
+          if (err) {
+            vscode.window.showErrorMessage(
+              "Error: Unable to create NestJS project."
+            );
+            return;
+          }
+          vscode.window.showInformationMessage(
+            "NestJS project created successfully."
+          );
+        }
+      );
       break;
     case "AdonisJS":
+      vscode.window.showWarningMessage("AdonisJS is not supported yet.");
+      break;
+      // Check if AdonisJS CLI is installed
+      exec("adonis --version", (err, stdout, stderr) => {
+        if (err) {
+          exec("npm install -g create-adonisjs", (err, stdout, stderr) => {
+            vscode.window.showInformationMessage(
+              "AdonisJS CLI installed successfully."
+            );
+            if (err) {
+              vscode.window.showErrorMessage(
+                "Error: Unable to install AdonisJS CLI."
+              );
+              return;
+            }
+          });
+        }
+      });
+
+      const starterKit =
+        (await vscode.window.showQuickPick(
+          ["None", "api", "web", "slim", "inertia"],
+          {placeHolder: "Want to use a starter kit?"}
+        )) || "None";
+
+      const db =
+        (await vscode.window.showQuickPick(
+          ["sqlite", "postgres", "mysql", "mssql"],
+          {placeHolder: "Select the database"}
+        )) || "SQLite";
+
+      const authGuard =
+        (await vscode.window.showQuickPick(
+          ["session", "access_token", "basic_auth"],
+          {placeHolder: "Select the auth guard"}
+        )) || "Session";
+
       vscode.window.showInformationMessage("Creating AdonisJS project...");
+
       break;
     case "Express":
+      // Check if gen-express-cli is installed
+      //   exec("gen-express-cli --version", (err, stdout, stderr) => {
+      //     if (err) {
+      //       exec("npm install -g gen-express-cli", (err, stdout, stderr) => {
+      //         if (err) {
+      //           vscode.window.showErrorMessage(
+      //             "Error: Unable to install gen-express-cli."
+      //           );
+      //           return;
+      //         }
+      //       });
+      //     }
+      //   });
+
       vscode.window.showInformationMessage("Creating Express project...");
+      // Create Express project
+      exec(
+        `cd ${urlWorkspace} && npx gen-express-cli@latest ${projectName} --template ${
+          isTypescript === "Yes" ? "typescript" : "javascript"
+        } --linter eslint --manager npm --api-doc true -d true --unit-test none -al false`,
+        (err, stdout, stderr) => {
+          if (err) {
+            vscode.window.showErrorMessage(
+              "Error: Unable to create Express project."
+            );
+            return;
+          }
+          vscode.window.showInformationMessage(
+            "Express project created successfully."
+          );
+        }
+      );
+
       break;
     case "React-NestJS":
       vscode.window.showInformationMessage("Creating React-NestJS project...");
