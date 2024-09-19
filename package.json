@@ -3,7 +3,8 @@
   "displayName": "Easy Setup",
   "description": "A tool for automates the setup of various projects",
   "publisher": "MarvinBost",
-  "version": "0.0.3",
+  "icon": "logo.jpg",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.93.0"
   },
