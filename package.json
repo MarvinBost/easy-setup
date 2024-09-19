@@ -1,10 +1,10 @@
 {
-  "name": "easy-setup",
-  "displayName": "Easy Setup",
-  "description": "A tool for automates the setup of various projects",
+  "name": "project-launchpad",
+  "displayName": "Project Launchpad",
+  "description": "Project Launchpad simplifies your workflow by offering an intuitive interface to quickly create new projects across various technologies. With just a few clicks, choose your framework, set options, and launch your project effortlessly.",
   "publisher": "MarvinBost",
-  "icon": "logo.jpg",
-  "version": "0.0.4",
+  "icon": "logo.png",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.93.0"
   },
@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "extension.createProject",
-        "title": "Easy Setup: Create Project"
+        "title": "Project Launchpad: Create a new project"
       }
     ]
   },

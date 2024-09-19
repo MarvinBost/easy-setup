@@ -1,6 +1,6 @@
-# Easy Setup
+# Project Launchpad
 
-Welcome to the Easy Setup extension! This extension simplifies the setup project process by providing a single command to create a new project.
+Project Launchpad simplifies your workflow by offering an intuitive interface to quickly create new projects across various technologies. With just a few clicks, choose your framework, set options, and launch your project effortlessly.
 
 ## Features
 
@@ -31,9 +31,9 @@ Only tested on Windows at the moment. Please report any issues you encounter.
 
 ## Release Notes
 
-### 0.0.4
+### 0.0.5
 
-- Add support Back-end projects (Express, Nest.js).
+- Changed the name of the extension to Project Launchpad.
 
 ### Roadmap
 
@@ -45,12 +45,12 @@ Only tested on Windows at the moment. Please report any issues you encounter.
 
 ## Commands
 
-For now, the only command available is `Easy Setup: Create a new project`.
+For now, the only command available is `Project Launchpad: Create a new project`.
 
 ## How to use
 
 1. Open the command palette by pressing `Ctrl + Shift + P`.
-2. Type `Easy Setup: Create a new project` and press `Enter`.
+2. Type `Project Launchpad: Create a new project` and press `Enter`.
 3. Select the project type you want to create.
 4. Enter the project name.
 5. Wait for the project to be created.
@@ -60,7 +60,7 @@ For now, the only command available is `Easy Setup: Create a new project`.
 
 This extension is open-source and available on [GitHub](https://github.com/MarvinBost/easy-setup)
 
-**Enjoy using Easy Setup!**
+**Enjoy using Project Launchpad!**
 
 ## Contributors
 
