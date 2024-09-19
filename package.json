@@ -1,7 +1,7 @@
 {
   "name": "easy-setup",
   "displayName": "Easy Setup",
-  "description": "A tool for create a project easy",
+  "description": "A tool for automates the setup of various projects",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.93.0"
@@ -26,6 +26,10 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
     "test": "vscode-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarvinBost/easy-setup.git"
   },
   "devDependencies": {
     "@types/vscode": "^1.93.0",

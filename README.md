@@ -49,7 +49,7 @@ For now, the only command available is `Easy Setup: Create a new project`.
 
 ## You can contribute!
 
-This extension is open-source and available on [GitHub]
+This extension is open-source and available on [GitHub](https://github.com/MarvinBost/easy-setup)
 
 **Enjoy using Easy Setup!**
 
